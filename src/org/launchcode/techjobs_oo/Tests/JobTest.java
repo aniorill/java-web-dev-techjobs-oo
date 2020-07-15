@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class JobTest {
     Job supportEngineer;
     Job supportEngineerTwo;
+    Job supportEngineerThree;
     Job softwareDeveloper;
     Job roadRunner;
 
@@ -23,6 +24,7 @@ public class JobTest {
     public void createJobObject() {
         supportEngineer = new Job("Support Engineer", new Employer("Avusoft"), new Location("Rampa"), new PositionType("Support"), new CoreCompetency("Patience"));
         supportEngineerTwo = new Job("Support Engineer", new Employer("Avusoft"), new Location("Rampa"), new PositionType("Support"), new CoreCompetency("Patience"));
+        supportEngineerThree = new Job("Support Engineer", new Employer("Avusoft"), new Location("Rampa"), new PositionType("Support"), new CoreCompetency());
         softwareDeveloper = new Job();
         roadRunner = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
@@ -35,7 +37,7 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields() {
         assertTrue(roadRunner.getName() == "Product tester" && (roadRunner.getName() instanceof String));
-        assertTrue(roadRunner.getEmployer().getValue() == "ACME" && (roadRunner.getEmployer() instanceof Employer)== true);
+        assertTrue(roadRunner.getEmployer().getValue() == "ACME" && (roadRunner.getEmployer() instanceof Employer));
         assertTrue(roadRunner.getLocation().getValue() == "Desert" && (roadRunner.getLocation() instanceof Location));
         assertTrue(roadRunner.getPositionType().getValue() == "Quality control" && (roadRunner.getPositionType() instanceof PositionType));
         assertTrue(roadRunner.getCoreCompetency().getValue() == "Persistence" && (roadRunner.getCoreCompetency() instanceof CoreCompetency));
@@ -45,6 +47,27 @@ public class JobTest {
     public void testJobsForEquality(){
       assertTrue(!supportEngineer.equals(supportEngineerTwo));
     }
+
+    @Test
+    public void testJobsToStringFirstTest(){
+        assertTrue(supportEngineer.toString().startsWith("\n") && supportEngineer.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testJobsToStringSecondTest(){
+        assertEquals(true, supportEngineer.toString().contains("\n ID: " + supportEngineer.getId() + "\n Name: " + supportEngineer.getName() + "\n Employer: " + supportEngineer.getEmployer().getValue() + "\n Location: " + supportEngineer.getLocation().getValue() + "\n Position Type: " + supportEngineer.getPositionType().getValue() + "\n Core Competency: " + supportEngineer.getCoreCompetency().getValue() + "\n"));
+    }
+
+    @Test
+    public void testJobsToStringThirdTest(){
+         assertEquals("\n ID: " + supportEngineerThree.getId()+ "\n Name: " + supportEngineerThree.getName() + "\n Employer: "+ supportEngineerThree.getEmployer().getValue() +
+                 "\n Location: " + supportEngineerThree.getLocation().getValue()
+                 +"\n Position Type: " + supportEngineerThree.getPositionType().getValue()
+                 +"\n Core Competency: " + "Data not available" + "\n",
+                 supportEngineerThree.toString());
+    }
+
+    
 
 
 }
