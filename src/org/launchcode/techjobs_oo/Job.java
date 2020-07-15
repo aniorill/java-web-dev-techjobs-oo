@@ -39,19 +39,19 @@ public class Job {
         //if ((this.id = null)) {
             //this.id == "Data not available";
     //}
-        if(this.name == null){
+        if(this.name == null || this.name == ""){
             this.name = "Data not available";
         }
-        if(this.employer.getValue() == null){
+        if(this.employer.getValue() == null || this.employer.getValue() == ""){
             this.employer.setValue("Data not available");
         }
-        if(this.location.getValue() == null){
+        if(this.location.getValue() == null || this.location.getValue() == ""){
             this.location.setValue("Data not available");
         }
-        if(this.positionType.getValue() == null){
+        if(this.positionType.getValue() == null|| this.positionType.getValue() == ""){
             this.positionType.setValue("Data not available");
         }
-        if(this.coreCompetency.getValue() == null){
+        if(this.coreCompetency.getValue() == null || this.coreCompetency.getValue() == ""){
             this.coreCompetency.setValue("Data not available");
         }
 
